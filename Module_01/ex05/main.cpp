@@ -1,4 +1,4 @@
-//#include "Harl.hpp"
+#include "Harl.hpp"
 #include <iostream>
 #include <string>
 
@@ -15,6 +15,12 @@ int main()
     } while (level != "DEBUG" && level != "INFO" && level != "WARNING" && level != "ERROR");
 
     std::cout << level << std::endl;
+    
+    Harl harl;
+
+    void (Harl::*ptr[4])(std::string word) = {
+        &Harl::
+    }
     
 
     return 0;

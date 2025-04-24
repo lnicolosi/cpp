@@ -14,6 +14,7 @@ int main()
         do {
             std::cout << std::endl << "Select one of these commands:\n";
             std::cout << "[ADD] -- [SEARCH] -- [EXIT]" << std::endl;
+            std::cout << "> ";
             std::getline(std::cin, choice);  
             } while (choice.empty() || 
                     (choice != "ADD" && choice != "add" && 

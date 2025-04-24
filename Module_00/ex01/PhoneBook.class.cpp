@@ -1,68 +1,66 @@
 #include "PhoneBook.class.hpp"
 
-
-// Default constructor
-/*PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(void)
 {
     _nbrContact = 0;
     return;
 }
-*/
+
 
 // Constructor for debug
 
-PhoneBook::PhoneBook(void)
-{    
-    _contact[0].set_firstName("Luca");
-    _contact[0].set_lastName("Nicolosi");
-    _contact[0].set_nickname("Eklerk");
-    _contact[0].set_phoneNumber("0795355818");
-    _contact[0].set_darkestSecret("lol");
+// PhoneBook::PhoneBook(void)
+// {    
+//     _contact[0].set_firstName("Luca");
+//     _contact[0].set_lastName("Nicolosi");
+//     _contact[0].set_nickname("Eklerk");
+//     _contact[0].set_phoneNumber("0795355818");
+//     _contact[0].set_darkestSecret("lol");
 
-    _contact[1].set_firstName("Marzia");
-    _contact[1].set_lastName("Nicolosi");
-    _contact[1].set_nickname("Marsoin");
-    _contact[1].set_phoneNumber("04298388");
-    _contact[1].set_darkestSecret("lol");
+//     _contact[1].set_firstName("Marzia");
+//     _contact[1].set_lastName("Nicolosi");
+//     _contact[1].set_nickname("Marsoin");
+//     _contact[1].set_phoneNumber("04298388");
+//     _contact[1].set_darkestSecret("lol");
 
-    _contact[2].set_firstName("Catherine");
-    _contact[2].set_lastName("Deneuve");
-    _contact[2].set_nickname("Cathedeneuve");
-    _contact[2].set_phoneNumber("429756129");
-    _contact[2].set_darkestSecret("lol");
+//     _contact[2].set_firstName("Catherine");
+//     _contact[2].set_lastName("Deneuve");
+//     _contact[2].set_nickname("Cathedeneuve");
+//     _contact[2].set_phoneNumber("429756129");
+//     _contact[2].set_darkestSecret("lol");
 
-    _contact[3].set_firstName("Jean-Pascalo");
-    _contact[3].set_lastName("Dos Santos Nunes");
-    _contact[3].set_nickname("Portugais");
-    _contact[3].set_phoneNumber("30820");
-    _contact[3].set_darkestSecret("lol");
+//     _contact[3].set_firstName("Jean-Pascalo");
+//     _contact[3].set_lastName("Dos Santos Nunes");
+//     _contact[3].set_nickname("Portugais");
+//     _contact[3].set_phoneNumber("30820");
+//     _contact[3].set_darkestSecret("lol");
 
-    _contact[4].set_firstName("Luca");
-    _contact[4].set_lastName("Nicolosi");
-    _contact[4].set_nickname("Eklerk");
-    _contact[4].set_phoneNumber("0795355818");
-    _contact[4].set_darkestSecret("lol");
+//     _contact[4].set_firstName("Luca");
+//     _contact[4].set_lastName("Nicolosi");
+//     _contact[4].set_nickname("Eklerk");
+//     _contact[4].set_phoneNumber("0795355818");
+//     _contact[4].set_darkestSecret("lol");
 
-    _contact[5].set_firstName("Luca");
-    _contact[5].set_lastName("Nicolosi");
-    _contact[5].set_nickname("Eklerk");
-    _contact[5].set_phoneNumber("0795355818");
-    _contact[5].set_darkestSecret("lol");
+//     _contact[5].set_firstName("Luca");
+//     _contact[5].set_lastName("Nicolosi");
+//     _contact[5].set_nickname("Eklerk");
+//     _contact[5].set_phoneNumber("0795355818");
+//     _contact[5].set_darkestSecret("lol");
 
-    _contact[6].set_firstName("Luca");
-    _contact[6].set_lastName("Nicolosi");
-    _contact[6].set_nickname("Eklerk");
-    _contact[6].set_phoneNumber("0795355818");
-    _contact[6].set_darkestSecret("lol");
+//     _contact[6].set_firstName("Luca");
+//     _contact[6].set_lastName("Nicolosi");
+//     _contact[6].set_nickname("Eklerk");
+//     _contact[6].set_phoneNumber("0795355818");
+//     _contact[6].set_darkestSecret("lol");
 
-    _contact[7].set_firstName("Luca");
-    _contact[7].set_lastName("Nicolosi");
-    _contact[7].set_nickname("Eklerk");
-    _contact[7].set_phoneNumber("0795355818");
-    _contact[7].set_darkestSecret("lol");
+//     _contact[7].set_firstName("Luca");
+//     _contact[7].set_lastName("Nicolosi");
+//     _contact[7].set_nickname("Eklerk");
+//     _contact[7].set_phoneNumber("0795355818");
+//     _contact[7].set_darkestSecret("lol");
 
-    _nbrContact = 7;
-}
+//     _nbrContact = 7;
+// }
 
 
 
@@ -107,41 +105,48 @@ void PhoneBook::addContact()
 {
     do //first name
     {
-        std::cout << "Enter contact's first name : ";
+        std::cout << "Enter contact's first name : " << std::endl;
+        std::cout << "> ";
         std::getline(std::cin, _str);
     } while (_str.empty());
     _contact[_nbrContact].set_firstName(_str);
         
     do //last name
     {
-        std::cout << "Enter contact's last name : ";
+        std::cout << "Enter contact's last name : " << std::endl;
+        std::cout << "> ";
         std::getline(std::cin, _str);
     } while (_str.empty());
     _contact[_nbrContact].set_lastName(_str);
         
     do //nickname
     {
-        std::cout << "Enter contact's nickname : ";
+        std::cout << "Enter contact's nickname : " << std::endl;
+        std::cout << "> ";
         std::getline(std::cin, _str);
     } while (_str.empty());
     _contact[_nbrContact].set_nickname(_str);
 
     do //phone number
     {
-        std::cout << "Enter contact's phone number : ";
+        std::cout << "Enter contact's phone number : " << std::endl;
+        std::cout << "> ";
         std::getline(std::cin, _str);
     } while(!checkPhoneNumber(_str));
     _contact[_nbrContact].set_phoneNumber(_str);
 
     do //darkest secret
     {
-        std::cout << "Enter contact's darkest secret : ";
+        std::cout << "Enter contact's darkest secret : " << std::endl;
+        std::cout << "> ";
         std::getline(std::cin, _str);
     } while (_str.empty());
     _contact[_nbrContact].set_darkestSecret(_str);
 
-    if (_nbrContact < 7)
-        _nbrContact++;
+    
+    _nbrContact++;
+    _nbrContact = _nbrContact % 8;
+    
 }
 
 
@@ -177,14 +182,29 @@ bool PhoneBook::checkIfIndex(const std::string& c)
 
 void PhoneBook::displayContactDetail()
 {
-    std::string c;
-    do
+    int i = 0;
+
+    while (true)
     {
         std::cout << "Select an index from 1 to 8 to show contact's infos" << std::endl;
-        std::getline(std::cin, c);
-    } while(!checkIfIndex(c));
+        std::cout << "> ";
 
-    int i = std::stoi(c) - 1; //string to int
+        std::cin >> i;
+
+        if (std::cin.fail() || i < 1 || i > 8)
+        {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number between 1 and 8." << std::endl;
+        }
+        else
+        {
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+    }
+
+    i--; 
 
     std::cout << std::endl;
     std::cout << _contact[i].get_firstName() << std::endl;
@@ -193,4 +213,3 @@ void PhoneBook::displayContactDetail()
     std::cout << _contact[i].get_phoneNumber() << std::endl;
     std::cout << _contact[i].get_darkestSecret() << std::endl;
 }
-
