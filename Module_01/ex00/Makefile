@@ -1,7 +1,7 @@
-CXX = c++
+CXX = g++-14
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Zombie
-SRCS = main.cpp zombieHord.cpp Zombie.cpp
+SRCS = main.cpp Zombie.cpp randomChump.cpp newZombie.cpp
 OBJS = $(SRCS:.cpp=.o)
 GREEN = \033[0;32m
 RESET = \033[0m

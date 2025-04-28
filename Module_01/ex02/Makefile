@@ -1,4 +1,4 @@
-CXX = c++
+CXX = g++-14
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = string
 SRCS = main.cpp

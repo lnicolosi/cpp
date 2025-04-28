@@ -27,7 +27,7 @@ int main(int argc, char **argv)
         return 1;
     }
     std::string replacedFile = std::string(argv[1]) + ".replace";
-    std::ofstream outFile(replacedFile);
+    std::ofstream outFile(replacedFile.c_str());
     if (outFile.fail())
     {
         std::cerr << "Impossible d'utiliser le fichier d'écriture..." << std::endl;

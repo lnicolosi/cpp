@@ -19,6 +19,6 @@ int main()
 
     delete[] z;
 
-    z = nullptr; 
+    z = NULL; 
     return 0;
 }
