@@ -1,7 +1,7 @@
 CXX = g++-14
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Harl
-SRCS = main.cpp
+SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 GREEN = \033[0;32m
 RESET = \033[0m

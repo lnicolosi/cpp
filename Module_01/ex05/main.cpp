@@ -14,14 +14,11 @@ int main()
         
     } while (level != "DEBUG" && level != "INFO" && level != "WARNING" && level != "ERROR");
 
-    std::cout << level << std::endl;
+
     
     Harl harl;
+    harl.complain(level);
 
-    void (Harl::*ptr[4])(std::string word) = {
-        &Harl::
-    }
-    
 
     return 0;
 }
