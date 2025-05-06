@@ -4,10 +4,10 @@
 // class MyClass
 // {
 // public:
-//     MyClass();                            // Constructeur par défaut
-//     MyClass(const MyClass& other);         // Constructeur de copie
-//     MyClass& operator=(const MyClass& other); // Opérateur d'affectation
-//     ~MyClass();                            // Destructeur
+//     MyClass();                                   // Constructeur par défaut
+//     MyClass(const MyClass& other);               // Constructeur de copie
+//     MyClass& operator=(const MyClass& other);    // Opérateur d'affectation
+//     ~MyClass();                                  // Destructeur
 
 // private:
 //     int _value; // Attribut privé exemple
