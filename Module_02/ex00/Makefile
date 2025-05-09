@@ -2,7 +2,7 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Canon
-SRCS = main.cpp
+SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
 GREEN = \033[0;32m
 RESET = \033[0m
