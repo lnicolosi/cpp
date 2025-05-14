@@ -1,6 +1,7 @@
 #include "ClapTrap.hpp"
 
-int main() {
+int main() 
+{
     std::cout << "\n===== TEST 1: NORMAL ACTIONS =====\n" << std::endl;
     ClapTrap bob("Bob");
     bob.printStats();

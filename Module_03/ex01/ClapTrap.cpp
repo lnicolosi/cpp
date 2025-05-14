@@ -6,7 +6,7 @@ ClapTrap::ClapTrap() :
     _energyPoints(10),
     _attackDamage(0)
 {
-
+    std::cout << "Constructeur par default ClapTrap" << std::endl; 
 }
 
 ClapTrap::ClapTrap(const std::string& name) :
@@ -15,7 +15,7 @@ ClapTrap::ClapTrap(const std::string& name) :
     _energyPoints(10),
     _attackDamage(0)
 {
-    std::cout << "Constructeur par default" << std::endl;
+    std::cout << "Constructeur ClapTrap" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other) :
@@ -24,7 +24,7 @@ ClapTrap::ClapTrap(const ClapTrap& other) :
     _energyPoints(other._energyPoints),
     _attackDamage(other._attackDamage)
 {
-    std::cout << "Constructeur de copie" << std::endl;
+    std::cout << "Constructeur de copie ClapTrap" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
@@ -36,13 +36,13 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
         _energyPoints = other._energyPoints;
         _attackDamage = other._attackDamage;
     }
-    std::cout << "Operateur d'affectation" << std::endl;
+    std::cout << "Operateur d'affectation ClapTrap" << std::endl;
     return *this;
 }
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructeur" << std::endl;
+    std::cout << "Destructeur ClapTrap" << std::endl;
 }
 
 //-------------------------------------------------------
@@ -85,11 +85,11 @@ void ClapTrap::attack(const std::string& target)
     {
         if (!isAlive())
         {
-            std::cout << "ClapTrap " << _name << " can't attack, he is dead..." << std::endl;
+            std::cout << _name << " can't attack, he is dead..." << std::endl;
             return ;
         }
         if (!hasEnergy())
-            std::cout << "ClapTrap " << _name << " can't attack, he has no energy..." << std::endl;
+            std::cout << _name << " can't attack, he has no energy..." << std::endl;
     }
     
 }
@@ -103,15 +103,15 @@ void ClapTrap::takeDamage(unsigned int amount)
         else
             _hitPoints -= amount;
         std::cout << RED << " >> TAKE DAMAGE <<" << RESET << std::endl;
-        std::cout << "ClapTrap " << _name << " takes " << amount << " damages!" 
+        std::cout << _name << " takes " << amount << " damages!" 
                   << std::endl;
     }
     else
     {
-        std::cout << "ClapTrap " << _name << " is already dead..." << std::endl;
+        std::cout << _name << " is already dead..." << std::endl;
     }
     if (!isAlive())
-        std::cout << "ClapTrap " << _name << " is now dead..." << std::endl;
+        std::cout << _name << " is now dead..." << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -121,17 +121,17 @@ void ClapTrap::beRepaired(unsigned int amount)
         _energyPoints--;
         _hitPoints += amount;
         std::cout << GREEN << " >> REPAIR <<" << RESET << std::endl;
-        std::cout << "ClapTrap " << _name << " repairs " << amount << " hit points!"
+        std::cout << _name << " repairs " << amount << " hit points!"
                   << std::endl;
     }
     else
     {
         if (!isAlive())
         {
-            std::cout << "ClapTrap " << _name << " can't repair himself, he is dead..." << std::endl;
+            std::cout << _name << " can't repair himself, he is dead..." << std::endl;
             return ;
         }
         if (!hasEnergy())
-            std::cout << "ClapTrap " << _name << " can't repair himself, he has no energy..." << std::endl;
+            std::cout << _name << " can't repair himself, he has no energy..." << std::endl;
     }
 }
