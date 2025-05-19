@@ -6,13 +6,24 @@
 
 int main()
 {
-    const WrongAnimal* meta = new WrongAnimal();
+
     const Animal* j = new Dog();
-    const WrongAnimal* i = new WrongCat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    i->makeSound(); //will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
+    const Animal* i = new Cat();
+    delete j;//should not create a leak
+    delete i;
+    
+    return 0;
+    // std::cout << "------ Création d’un Cat original ------" << std::endl;
+    // Cat cat1;
+    
+    // std::cout << "\n------ Test constructeur de copie ------" << std::endl;
+    // Cat cat2(cat1);
+
+    // std::cout << "\n------ Test opérateur d’affectation ------" << std::endl;
+    // Cat cat3;
+    // cat3 = cat1;
+
+    // std::cout << "\n------ Suppression des objets ------" << std::endl;
+    // return 0; 
 
 }
