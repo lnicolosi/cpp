@@ -29,7 +29,10 @@ run: all
 	@./$(NAME)
 
 leaks: all
-	@echo "$(GREEN)[Checking for memory leaks...]$(RESET)"
-	@leaks --atExit -- ./$(NAME) | grep "leaked"
+#	@echo "$(GREEN)[Checking for memory leaks...]$(RESET)"
+#	@leaks --atExit -- ./$(NAME) | grep "leaked"
+
+	@echo "$(GREEN)[Checking for memory leaks with Valgrind...]$(RESET)"
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 .PHONY: all clean fclean re

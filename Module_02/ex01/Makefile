@@ -1,5 +1,5 @@
-CXX = g++-14 
-#CXX = c++
+#CXX = g++-14 
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Fixed
 SRCS = main.cpp Fixed.cpp
@@ -29,7 +29,11 @@ run: all
 	@./$(NAME)
 
 leaks: all
-	@echo "$(GREEN)[Checking for memory leaks...]$(RESET)"
-	@leaks --atExit -- ./$(NAME) | grep "leaked"
+#	@echo "$(GREEN)[Checking for memory leaks...]$(RESET)"
+#	@leaks --atExit -- ./$(NAME) | grep "leaked"
+
+	@echo "$(GREEN)[Checking for memory leaks with Valgrind...]$(RESET)"
+	@valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) 2>&1 | grep "definitely lost"
+
 
 .PHONY: all clean fclean re

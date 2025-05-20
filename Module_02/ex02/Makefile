@@ -1,5 +1,5 @@
-CXX = g++-14 
-#CXX = c++
+#CXX = g++-14 
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Fixed
 SRCS = main.cpp Fixed.cpp
