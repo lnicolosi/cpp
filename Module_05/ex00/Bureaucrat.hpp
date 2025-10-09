@@ -13,7 +13,7 @@ class Bureaucrat
 
     public:
         //canonic construction
-        Bureaucrat();
+        Bureaucrat(const std::string name, int grade);
         Bureaucrat(const Bureaucrat& other);
         Bureaucrat& operator=(const Bureaucrat& other);
         ~Bureaucrat();
@@ -39,10 +39,9 @@ class Bureaucrat
         //other
         void incrementGrade();
         void decrementGrade();
-
-
-
 };
+
+std::ostream& operator<<(std::ostream& out, con)
 
 
 #endif
