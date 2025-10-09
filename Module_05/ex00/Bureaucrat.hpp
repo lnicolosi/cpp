@@ -8,12 +8,12 @@
 class Bureaucrat
 {
     private:
-        const std::string _name;
-        int _grade;
+        const std::string   _name;
+        int                 _grade;
 
     public:
         //canonic construction
-        Bureaucrat(const std::string name, int grade);
+        Bureaucrat(const std::string& name, int grade);
         Bureaucrat(const Bureaucrat& other);
         Bureaucrat& operator=(const Bureaucrat& other);
         ~Bureaucrat();
@@ -33,15 +33,15 @@ class Bureaucrat
         };
 
         //getters
-        const std::string& getString() const;
-        const int& getGrade() const;
+        const std::string& getName() const;
+        int getGrade() const;
 
         //other
         void incrementGrade();
         void decrementGrade();
 };
 
-std::ostream& operator<<(std::ostream& out, con)
+std::ostream& operator<<(std::ostream& out, const Bureaucrat& b);
 
 
 #endif
