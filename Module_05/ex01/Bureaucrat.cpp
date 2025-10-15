@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) 
     :   _name(name),
@@ -72,13 +73,10 @@ void Bureaucrat::signForm(Form& f)
 {
     int res = f.beSigned(*this);
     if(res == 1)
-        std::cout << this << "signed" << f;
+        std::cout << *this << " signed : " << std::endl << f;
     else if (res == 2)
-        std::cout << this << "coudldn't sign " << f << " because it is already signed." << std::endl;
-    else
-        std::cout << this << "couldn't sign " << f << " because " << std::endl;
+        std::cout << *this << " coudldn't sign : " << std::endl << f << "because it is already signed." << std::endl;
 }
-
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {

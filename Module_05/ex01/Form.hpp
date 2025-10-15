@@ -4,7 +4,8 @@
 
 #include <iostream>
 #include <string>
-#include "Bureaucrat.hpp"
+//#include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form
 {
@@ -38,7 +39,7 @@ class Form
         int getGradeRequieredToSign() const;
         int getGradeRequiredToExecute() const;
 
-        int beSigned(Bureaucrat& b);
+        int beSigned(const Bureaucrat& b);
 
 
 

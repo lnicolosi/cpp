@@ -1,4 +1,5 @@
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
 Form::Form(const std::string& name, const int gradeRequiredToSign, const int gradeRequiredToExecute)
     :   _name(name),
@@ -15,8 +16,8 @@ Form::Form(const std::string& name, const int gradeRequiredToSign, const int gra
 Form::Form(const Form& other)
     :   _name(other._name),
         _isSigned(other._isSigned),
-        _gradeRequiredToExecute(other._gradeRequiredToExecute),
-        _gradeRequiredToSign(other._gradeRequiredToSign)
+        _gradeRequiredToSign(other._gradeRequiredToSign),
+        _gradeRequiredToExecute(other._gradeRequiredToExecute) 
 {
 
 }
@@ -27,6 +28,7 @@ Form& Form::operator=(const Form& other)
     {
         _isSigned = other._isSigned;
     }
+    return *this;
 }
 
 Form::~Form()
@@ -54,25 +56,25 @@ bool Form::getIfSigned() const
     return (this->_isSigned);
 }
 
-const int Form::getGradeRequieredToSign() const
+int Form::getGradeRequieredToSign() const
 {
     return (this->_gradeRequiredToSign);
 }
 
-const int Form::getGradeRequiredToExecute() const
+int Form::getGradeRequiredToExecute() const
 {
     return (this->_gradeRequiredToExecute);
 }
 
-int Form::beSigned(Bureaucrat& b)
+int Form::beSigned(const Bureaucrat& b)
 {
     if (b.getGrade() > this->_gradeRequiredToSign)
     {
+        std::cout << b << " couldn't sign : " << std::endl << *this << "because " << std::endl;
         throw GradeTooLowException();
     }
     if (this->_isSigned)
     {
-        throw "already signed";
         return 2;
     }
     else
@@ -83,8 +85,8 @@ int Form::beSigned(Bureaucrat& b)
 std::ostream& operator<<(std::ostream& out, const Form& f)
 {
     return (out << "name : " << f.getName()
-                << "/n" << "signed : " << f.getIfSigned() 
-                << "/n" << "grade required to sign : " << f.getGradeRequieredToSign()
-                << "/n" << "grade required to execute : " << f.getGradeRequiredToExecute()
-                << std::endl);
+                << std::endl << "signed : " << f.getIfSigned() 
+                << std::endl << "grade required to sign : " << f.getGradeRequieredToSign()
+                << std::endl << "grade required to execute : " << f.getGradeRequiredToExecute()
+                << std::endl); //<< "--------------------------------" << std::endl);
 }
