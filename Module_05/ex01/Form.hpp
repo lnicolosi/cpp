@@ -1,8 +1,10 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
+
 #include <iostream>
 #include <string>
+#include "Bureaucrat.hpp"
 
 class Form
 {
@@ -14,15 +16,35 @@ class Form
 
 
     public:
-        Form(const std::string& name, bool isSigned, const int gradeRequiredToSign, const int gradeRequiredToExecute);
+        Form(const std::string& name, const int gradeRequiredToSign, const int gradeRequiredToExecute);
         Form(const Form& other);
-        const Form& operator=(const Form& other);
+        Form& operator=(const Form& other);
         ~Form();
 
-        
+        class GradeTooHighException : public std::exception
+        {
+            public:
+                virtual const char* what() const throw();
+        };
 
-}
+        class GradeTooLowException : public std::exception
+        {
+            public:
+                virtual const char* what() const throw();
+        };
 
+        const std::string& getName() const;
+        bool getIfSigned() const;
+        int getGradeRequieredToSign() const;
+        int getGradeRequiredToExecute() const;
+
+        int beSigned(Bureaucrat& b);
+
+
+
+};
+
+std::ostream& operator<<(std::ostream& out, const Form& f);
 
 
 #endif

@@ -68,6 +68,17 @@ void Bureaucrat::decrementGrade()
     _grade++;
 }
 
+void Bureaucrat::signForm(Form& f)
+{
+    int res = f.beSigned(*this);
+    if(res == 1)
+        std::cout << this << "signed" << f;
+    else if (res == 2)
+        std::cout << this << "coudldn't sign " << f << " because it is already signed." << std::endl;
+    else
+        std::cout << this << "couldn't sign " << f << " because " << std::endl;
+}
+
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {
