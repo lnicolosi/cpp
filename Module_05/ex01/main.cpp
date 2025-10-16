@@ -10,7 +10,7 @@ int main()
         // std::cout << std::endl;
         // b.signForm(f);
         std::cout << f << std::endl;
-        Bureaucrat c("Giorgia", 15);
+        Bureaucrat c("Giorgia", 120);
         c.signForm(f);
         std::cout << std::endl;
         Bureaucrat d("Cristiana", 10);

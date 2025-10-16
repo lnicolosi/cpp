@@ -71,11 +71,18 @@ void Bureaucrat::decrementGrade()
 
 void Bureaucrat::signForm(Form& f)
 {
-    int res = f.beSigned(*this);
-    if(res == 1)
-        std::cout << *this << " signed : " << std::endl << f;
-    else if (res == 2)
-        std::cout << *this << " coudldn't sign : " << std::endl << f << "because it is already signed." << std::endl;
+    try
+    {
+        int res = f.beSigned(*this);
+        if(res == 1)
+            std::cout << *this << " signed : " << std::endl << f;
+        else if (res == 2)
+            std::cout << *this << " couldn't sign : " << std::endl << f << "because it is already signed." << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr<< *this << " couldn't sign : " << std::endl << f << "because " << e.what() << std::endl;
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)

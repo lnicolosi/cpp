@@ -7,9 +7,9 @@ Form::Form(const std::string& name, const int gradeRequiredToSign, const int gra
         _gradeRequiredToSign(gradeRequiredToSign),
         _gradeRequiredToExecute(gradeRequiredToExecute)
 {
-    if (_gradeRequiredToExecute < 1 && _gradeRequiredToSign < 1)
+    if (_gradeRequiredToExecute < 1 || _gradeRequiredToSign < 1)
         throw GradeTooHighException();
-    if (_gradeRequiredToExecute > 150 && _gradeRequiredToSign > 150)
+    if (_gradeRequiredToExecute > 150 || _gradeRequiredToSign > 150)
         throw GradeTooLowException();
 }
 
@@ -69,14 +69,9 @@ int Form::getGradeRequiredToExecute() const
 int Form::beSigned(const Bureaucrat& b)
 {
     if (b.getGrade() > this->_gradeRequiredToSign)
-    {
-        std::cout << b << " couldn't sign : " << std::endl << *this << "because " << std::endl;
         throw GradeTooLowException();
-    }
     if (this->_isSigned)
-    {
         return 2;
-    }
     else
         this->_isSigned = true;
     return 1;
