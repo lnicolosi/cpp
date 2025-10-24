@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) 
     :   _name(name),
@@ -69,23 +69,36 @@ void Bureaucrat::decrementGrade()
     _grade++;
 }
 
-void Bureaucrat::signForm(Form& f)
+void Bureaucrat::signForm(AForm& f)
 {
     try
     {
         int res = f.beSigned(*this);
         if(res == 1)
-            std::cout << *this << " signed : " << std::endl << f;
+            std::cout << this->_name << " signed : " << f.getName() << std::endl;
         else if (res == 2)
-            std::cout << *this << " couldn't sign : " << std::endl << f << "because it is already signed." << std::endl;
+            std::cout << this->_name << " couldn't sign : " << f.getName() << " because it is already signed." << std::endl;
     }
     catch(const std::exception& e)
     {
-        std::cerr<< *this << " couldn't sign : " << std::endl << f << "because " << e.what() << std::endl;
+        std::cerr << this->_name << " couldn't sign : " << f.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(const AForm& form)
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << this->_name << " executed " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << this->_name << " couldn't execute : " << std::endl << form.getName() << " because " << e.what() << std::endl;
     }
 }
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& b)
 {
-    return out << b.getName() << ", bureaucrat grade " << b.getGrade();
+    return out << "BUREAUCRAT name : " << b.getName() << ", bureaucrat grade " << b.getGrade();
 }

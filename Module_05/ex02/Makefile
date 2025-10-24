@@ -2,7 +2,7 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Bureaucrat
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 OBJS = $(SRCS:.cpp=.o)
 GREEN = \033[0;32m
 RESET = \033[0m
@@ -22,6 +22,7 @@ clean:
 fclean: clean
 	@rm -f $(OBJS)
 	@rm -f $(NAME)
+	@rm -f *_shrubbery
 
 re: fclean all
 
