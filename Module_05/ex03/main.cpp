@@ -6,7 +6,7 @@
 /*   By: lnicolos <lnicolos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 16:30:19 by lnicolos          #+#    #+#             */
-/*   Updated: 2025/11/19 16:30:20 by lnicolos         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:43:09 by lnicolos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int main()
         Intern someRandomIntern;
         Bureaucrat boss("Boss", 1); // Un bureaucrate avec le grade max
 
-        // ===== Création de formulaires valides =====
-        std::cout << std::endl << "=== Test des formulaires valides ===" << std::endl;
+        //Création de formulaires valide
+        std::cout << std::endl << "Test des formulaires valides" << std::endl;
 
         AForm* shrubbery = someRandomIntern.makeForm("shrubbery creation", "Garden");
-        AForm* robotomy  = someRandomIntern.makeForm("robotomy request", "Bender");
-        AForm* pardon    = someRandomIntern.makeForm("presidential pardon", "Arthur Dent");
+        AForm* robotomy  = someRandomIntern.makeForm("robotomy request", "Dice");
+        AForm* pardon    = someRandomIntern.makeForm("presidential pardon", "Matthieu");
 
         // Signature et exécution
         if (shrubbery)
@@ -47,17 +47,17 @@ int main()
             boss.executeForm(*pardon);
         }
 
-        // ===== Cas d'erreur : nom inconnu =====
-        std::cout << std::endl << "=== Test d'un nom inconnu ===" << std::endl;
+        //erreur nom inconnu
+        std::cout << std::endl << "Test d'un nom inconnu" << std::endl;
         AForm* unknown = someRandomIntern.makeForm("pizza delivery", "Bob");
         if (!unknown)
             std::cout << "No form created for invalid request." << std::endl;
 
-        // Libération mémoire
+        // free
         delete shrubbery;
         delete robotomy;
         delete pardon;
-        delete unknown; // NULL safe : ne fait rien si pointeur nul
+        delete unknown; // ne fait rien si pointeur nul
     }
     catch (std::exception& e)
     {
