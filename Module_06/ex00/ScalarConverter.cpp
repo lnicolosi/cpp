@@ -54,19 +54,13 @@ void convertFloatValue(float value)
     else
         std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
     //int
-    if (value > static_cast<float>(INT_MAX) || value < static_cast<float>(INT_MIN))
+    if (value > static_cast<double>(INT_MAX) || value < static_cast<double>(INT_MIN))
         std::cout << "int: impossible" << std::endl;
     else
         std::cout << "int: " << static_cast<int>(value) << std::endl;
     //float
-    if (value >= 1000 || value <= -1000)
-        std::cout << "float: impossible" << std::endl;
-    else
-        std::cout << "float: " << value << "f" << std::endl;
+    std::cout << "float: " << value << "f" << std::endl;
     //double
-    //if (value >= 1000 || value <= -1000)
-    //    std::cout << "double: impossible" << std::endl;
-    //else
     std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
@@ -87,15 +81,9 @@ void convertDoubleValue(double value)
     else
         std::cout << "int: " << static_cast<int>(value) << std::endl;
     //float
-    if (value > static_cast<double>(FLT_MAX) || value < -static_cast<double>(FLT_MAX))
-        std::cout << "float: impossible" << std::endl;
-    else
-        std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+    std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
     //double
-    if (value > static_cast<double>(DBL_MAX) || value < -static_cast<double>(DBL_MAX))
-        std::cout << "double: impossible" << std::endl;
-    else
-        std::cout << "double: " << value << std::endl;
+    std::cout << "double: " << value << std::endl;
 }
 
 void convertIntValue(int value)
@@ -115,26 +103,40 @@ void convertIntValue(int value)
     else
         std::cout << "int: " << static_cast<int>(value) << std::endl;
     //float
-    if (value > static_cast<double>(FLT_MAX) || value < -static_cast<double>(FLT_MAX))
-        std::cout << "float: impossible" << std::endl;
-    else
-        std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
+    std::cout << "float: " << static_cast<float>(value) << "f" << std::endl;
     //double
-    if (value > static_cast<double>(DBL_MAX) || value < -static_cast<double>(DBL_MAX))
-        std::cout << "double: impossible" << std::endl;
-    else
-        std::cout << "double: " << static_cast<double>(value) << std::endl;
+    std::cout << "double: " << static_cast<double>(value) << std::endl;
 }
 
 void ScalarConverter::convert(const std::string& str)
 {
-    //if (str.empty())
-        //IMPOSSIBLE
+    if (str.empty())
+    {
+        isImpossible();
+        return ;
+    }
 
-    //if (str == "nanf" || str == "-inff" || str == "+inff")
-        //FLOAT pseudo lit
-    //else if (str == "nan" || str == "-inf" || str == "+inf")
-        //DOUBLE pseudo lit
+    //pseudo-littéraux float
+    if (str == "nanf" || str == "+inff" || str == "-inff")
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: " << str << std::endl;
+        std::cout << "double: " 
+                  << (str == "nanf" ? "nan" : (str[0] == '+' ? "+inf" : "-inf")) << std::endl;
+        return;
+    }
+
+    //pseudo-littéraux double
+    if (str == "nan" || str == "+inf" || str == "-inf")
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: " 
+                  << (str == "nan" ? "nanf" : (str[0] == '+' ? "+inff" : "-inff")) << std::endl;
+        std::cout << "double: " << str << "\n";
+        return;
+    }
     if (str.length() == 1 && !isdigit(str[0]))
     {
         //CHAR
@@ -148,12 +150,11 @@ void ScalarConverter::convert(const std::string& str)
         std::istringstream sso(nof);
         float input;
         sso >> input;
-        if (sso.fail() || input != input || input > INT_MAX || input < INT_MIN)
+        if (sso.fail())
         {
             isImpossible();
             return ;
         }
-        input = static_cast<float>(static_cast<int>(input * 1000.0f) /1000.0f);//tronquer a 3 décimale pour pas avoir : 127.9999999f = 128f mais 128.0f
         convertFloatValue(input);
     }
     else if (str.find('.') != std::string::npos)
@@ -162,12 +163,11 @@ void ScalarConverter::convert(const std::string& str)
         std::istringstream sso(str);
         double input;
         sso >> input;
-        if (input != input || input > INT_MAX || input < INT_MIN)
+        if (sso.fail())
         {
             isImpossible();
             return ;
-        } 
-        input = static_cast<double>(static_cast<int>(input * 1000.0) /1000.0);//tronquer a 3 décimale pour pas avoir : 127.9999999f = 128f mais 128.0f
+        }
         convertDoubleValue(input);
     }
     else if (isInt(str))
@@ -176,9 +176,15 @@ void ScalarConverter::convert(const std::string& str)
         std::istringstream sso(str);
         int input;
         sso >> input;
+        if (sso.fail())
+        {
+            isImpossible();
+            return ;
+        }
         convertIntValue(input);
     }
     else
         //IMPOSSIBLE
         isImpossible();
+    return ;
 }
