@@ -1,8 +1,8 @@
 #CXX = g++-14 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = cast
-SRCS = main.cpp ScalarConverter.cpp
+NAME = mutantStack
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 GREEN = \033[0;32m
 RESET = \033[0m

@@ -2,7 +2,7 @@
 #include <string>
 
 // Fonctions pout int
-void printInt(int &x)
+void printInt(const int &x)
 {
     std::cout << x << " ";
 }
@@ -14,7 +14,7 @@ void addOne(int &x)
 
 
 // Fonctions pour string
-void printString(std::string &s)
+void printString(const std::string &s)
 {
     std::cout << s << " ";
 }
@@ -30,13 +30,13 @@ int main()
     int tab[] = {1, 2, 3, 4, 5};
     const size_t len = 5;
 
-    std::cout << "Tableau au début      : ";
+    std::cout << "Tableau au début          : ";
     iter(tab, len, printInt);
     std::cout << std::endl;
 
     iter(tab, len, addOne);
 
-    std::cout << "Après un addOne sur tout : ";
+    std::cout << "Après un addOne sur tout  : ";
     iter(tab, len, printInt);
     std::cout << std::endl;
 
@@ -52,6 +52,18 @@ int main()
 
     std::cout << "String - Après addExclamation : ";
     iter(arr, slen, printString);
+    std::cout << std::endl;
+    
+    //Test tableau const
+    const int constTab[] = {10, 20, 30};
+    const size_t clen = 3;
+
+    std::cout << "Tableau const au début    : ";
+    iter(constTab, clen, printInt);
+    std::cout << std::endl;
+
+    std::cout << "Après un addOne sur tout  : "; //pas possible car const
+    iter(constTab, clen, printInt);
     std::cout << std::endl;
 
     return 0;
