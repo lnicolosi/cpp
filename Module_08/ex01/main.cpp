@@ -4,7 +4,7 @@
 
 int main()
 {
-    std::cout << "===== BASIC TEST =====" << std::endl;
+    std::cout << "BASIC TEST :___________" << std::endl;
 
     try
     {
@@ -24,7 +24,7 @@ int main()
         std::cout << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n===== TEST addMultipleNumber =====" << std::endl;
+    std::cout << "\nTEST addMultipleNumber : ______________" << std::endl;
 
     try
     {
@@ -47,7 +47,7 @@ int main()
         std::cout << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n===== TEST SPAN FULL =====" << std::endl;
+    std::cout << "\nTEST SPAN FULL : ______________" << std::endl;
 
     try
     {
@@ -64,7 +64,7 @@ int main()
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
 
-    std::cout << "\n===== TEST NO SPAN =====" << std::endl;
+    std::cout << "\nTEST NO SPAN: _________________" << std::endl;
 
     try
     {
@@ -79,7 +79,7 @@ int main()
         std::cout << "Exception caught: " << e.what() << std::endl;
     }
 
-    std::cout << "\n===== TEST WITH DUPLICATES =====" << std::endl;
+    std::cout << "\nTEST WITH DUPLICATES: ___________________" << std::endl;
 
     try
     {
@@ -97,7 +97,7 @@ int main()
         std::cout << "Exception: " << e.what() << std::endl;
     }
 
-    std::cout << "\n===== TEST 10000 NUMBERS =====" << std::endl;
+    std::cout << "\nTEST 10000 NUMBERS : __________________" << std::endl;
 
     try
     {

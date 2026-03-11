@@ -37,7 +37,7 @@ int main()
 
     try // test pour voir si lexception fonctinone bien
     {
-        list[10] = 43; 
+        list[10] = 43;
         std::cout << list[10] << std::endl;
     }
     catch(const std::exception& e)
