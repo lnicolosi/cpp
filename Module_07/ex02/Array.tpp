@@ -12,7 +12,7 @@ template<typename T>
 Array<T>::Array(unsigned int n) :
     _size(n)
 {
-    _data = new T[_size];
+    _data = new T[_size]();
 }
 
 template<typename T>
@@ -20,7 +20,7 @@ Array<T>::Array(const Array<T> &other) :
     _size(other._size),
     _data(NULL)
 {
-    _data = new T[_size];
+    _data = new T[_size]();
     for (unsigned int i = 0; i < _size; i++)
     {
         _data[i] = other._data[i];
@@ -34,7 +34,7 @@ Array<T>& Array<T>::operator=(const Array<T> &other)
     {
         delete[] _data;
         _size = other._size;
-        _data = new T[_size];
+        _data = new T[_size]();
         for (unsigned int i = 0; i < _size; i++)
         {
             _data[i] = other._data[i];
